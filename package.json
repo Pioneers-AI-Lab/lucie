@@ -9,9 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@mastra/core": "1.0.0-beta.19",
+    "@mastra/libsql": "1.0.0-beta.10",
+    "@mastra/loggers": "1.0.0-beta.3",
+    "@mastra/memory": "1.0.0-beta.10",
+    "@mastra/observability": "1.0.0-beta.9",
+    "mastra": "1.0.0-beta.12",
     "next": "16.1.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
