@@ -97,8 +97,7 @@ export const ConfirmationRequest = ({ children }: ConfirmationRequestProps) => {
   const { state } = useConfirmation();
 
   // Only show when approval is requested
-  // @ts-expect-error state only available in AI SDK v6
-  if (state !== "approval-requested") {
+  if (state !== 'approval-requested') {
     return null;
   }
 
@@ -117,11 +116,9 @@ export const ConfirmationAccepted = ({
   // Only show when approved and in response states
   if (
     !approval?.approved ||
-        // @ts-expect-error state only available in AI SDK v6
-    (state !== "approval-responded" &&
-        // @ts-expect-error state only available in AI SDK v6
-      state !== "output-denied" &&
-      state !== "output-available")
+    (state !== 'approval-responded' &&
+      state !== 'output-denied' &&
+      state !== 'output-available')
   ) {
     return null;
   }
@@ -141,11 +138,9 @@ export const ConfirmationRejected = ({
   // Only show when rejected and in response states
   if (
     approval?.approved !== false ||
-        // @ts-expect-error state only available in AI SDK v6
-    (state !== "approval-responded" &&
-        // @ts-expect-error state only available in AI SDK v6
-      state !== "output-denied" &&
-      state !== "output-available")
+    (state !== 'approval-responded' &&
+      state !== 'output-denied' &&
+      state !== 'output-available')
   ) {
     return null;
   }
@@ -153,7 +148,7 @@ export const ConfirmationRejected = ({
   return children;
 };
 
-export type ConfirmationActionsProps = ComponentProps<"div">;
+export type ConfirmationActionsProps = ComponentProps<'div'>;
 
 export const ConfirmationActions = ({
   className,
@@ -162,14 +157,13 @@ export const ConfirmationActions = ({
   const { state } = useConfirmation();
 
   // Only show when approval is requested
-  // @ts-expect-error state only available in AI SDK v6
-  if (state !== "approval-requested") {
+  if (state !== 'approval-requested') {
     return null;
   }
 
   return (
     <div
-      className={cn("flex items-center justify-end gap-2 self-end", className)}
+      className={cn('flex items-center justify-end gap-2 self-end', className)}
       {...props}
     />
   );
@@ -178,5 +172,5 @@ export const ConfirmationActions = ({
 export type ConfirmationActionProps = ComponentProps<typeof Button>;
 
 export const ConfirmationAction = (props: ConfirmationActionProps) => (
-  <Button className="h-8 px-3 text-sm" type="button" {...props} />
+  <Button className='h-8 px-3 text-sm' type='button' {...props} />
 );
