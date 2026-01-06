@@ -4,7 +4,7 @@ import { PinoLogger } from '@mastra/loggers';
 import { LibSQLStore } from '@mastra/libsql';
 import { Observability } from '@mastra/observability';
 import { lucie } from './agents/lucie-agents';
-
+import { slackRoutes } from './slack/routes';
 
 export const mastra = new Mastra({
   agents: { lucie },
@@ -17,6 +17,9 @@ export const mastra = new Mastra({
     name: 'Mastra',
     level: 'info',
   }),
+  server: {
+    apiRoutes: slackRoutes,
+  },
   observability: new Observability({
     // Enables DefaultExporter and CloudExporter for tracing
     default: { enabled: true },
