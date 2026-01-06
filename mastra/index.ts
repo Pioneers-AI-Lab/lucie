@@ -5,15 +5,16 @@ import { LibSQLStore } from '@mastra/libsql';
 import { Observability } from '@mastra/observability';
 import { weatherWorkflow } from './workflows/weather-workflow';
 import { weatherAgent } from './agents/weather-agent';
+import { lucie } from './agents/lucie-agents';
 
 
 export const mastra = new Mastra({
   workflows: { weatherWorkflow },
-  agents: { weatherAgent },
+  agents: { weatherAgent, lucie },
   storage: new LibSQLStore({
-    id: "mastra-storage",
+    id: 'mastra-storage',
     // stores observability, scores, ... into memory storage, if it needs to persist, change to file:../mastra.db
-    url: ":memory:",
+    url: ':memory:',
   }),
   logger: new PinoLogger({
     name: 'Mastra',
