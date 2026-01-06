@@ -100,11 +100,11 @@ function Chat() {
           </ConversationContent>
         </Conversation>
 
-        <PromptInput onSubmit={handleSubmit} className="mt-20">
+        <PromptInput onSubmit={handleSubmit} className="mt-auto">
           <PromptInputBody>
             <PromptInputTextarea
               onChange={(e) => setInput(e.target.value)}
-              className="md:leading-10"
+              className=""
               value={input}
               placeholder="Type your message..."
               disabled={status !== 'ready'}
