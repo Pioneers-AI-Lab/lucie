@@ -1,17 +1,17 @@
-import { handleChatStream } from '@mastra/ai-sdk';
-import { toAISdkV5Messages } from '@mastra/ai-sdk/ui'
-import { createUIMessageStreamResponse } from 'ai';
-import { mastra } from '@/mastra';
-import { NextResponse } from 'next/server';
+import { handleChatStream } from "@mastra/ai-sdk";
+import { toAISdkV5Messages } from "@mastra/ai-sdk/ui";
+import { createUIMessageStreamResponse } from "ai";
+import { mastra } from "@/mastra";
+import { NextResponse } from "next/server";
 
-const THREAD_ID = 'example-user-id';
-const RESOURCE_ID = 'lucie-chat';
+const THREAD_ID = "example-user-id";
+const RESOURCE_ID = "lucie-chat";
 
 export async function POST(req: Request) {
   const params = await req.json();
   const stream = await handleChatStream({
     mastra,
-    agentId: 'lucie',
+    agentId: "lucie",
     params: {
       ...params,
       memory: {
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
-  const memory = await mastra.getAgentById('lucie-agent').getMemory();
+  const memory = await mastra.getAgentById("lucie-agent").getMemory();
   let response = null;
 
   try {
@@ -34,7 +34,7 @@ export async function GET() {
       resourceId: RESOURCE_ID,
     });
   } catch {
-    console.log('No previous messages found.');
+    console.log("No previous messages found.");
   }
 
   const uiMessages = toAISdkV5Messages(response?.messages || []);
